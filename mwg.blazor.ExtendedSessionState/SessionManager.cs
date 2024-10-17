@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace mwg.blazor.extendedsessionstate;
+namespace maatwerkgiethoorn.blazor.extendedsessionstate;
 
 public class SessionManager<T> : ISessionManager<T>  where T: new()
 {

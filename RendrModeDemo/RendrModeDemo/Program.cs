@@ -3,12 +3,11 @@ using RendrModeDemo.Components;
 using Marimer.Blazor.RenderMode;
 using RendrModeDemo.Client;
 using RendrModeDemo;
-using mwg.blazor.extendedsessionstate;
+using maatwerkgiethoorn.blazor.extendedsessionstate.server;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services
-    .AddHttpContextAccessor()
     .AddExtendedSessionStateServer<AppState>()
     .AddRenderModeDetection()
     .AddRazorComponents()

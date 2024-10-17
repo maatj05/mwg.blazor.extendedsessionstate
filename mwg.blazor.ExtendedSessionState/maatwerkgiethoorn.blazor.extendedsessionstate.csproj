@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <Title>Blazor Application State extension</Title>
     <PackageReleaseNotes>Initial release</PackageReleaseNotes>
-    <PackageId>maatwerkgiethoorn.blazor.extendedsessionstate</PackageId>
+    <PackageId>$(AssemblyName)</PackageId>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
 

@@ -1,12 +1,14 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Marimer.Blazor.RenderMode.WebAssembly;
 
-using mwg.blazor.extendedsessionstate;
+using maatwerkgiethoorn.blazor.extendedsessionstate;
+using RendrModeDemo.Client;
 
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.Services.AddExtendedSessionStateWebAssembly<AppState>(new Uri(builder.HostEnvironment.BaseAddress));
-
-await builder.Build().RunAsync();
-
 builder.Services.AddRenderModeDetection();
+
+var app = builder.Build();
+
+await app.RunAsync();

@@ -2,7 +2,7 @@
 
 using Microsoft.AspNetCore.Http;
 
-namespace mwg.blazor.extendedsessionstate;
+namespace maatwerkgiethoorn.blazor.extendedsessionstate;
 
 public class SessionIdManager(IHttpContextAccessor httpContextAccessor) : ISessionIdManager
 {

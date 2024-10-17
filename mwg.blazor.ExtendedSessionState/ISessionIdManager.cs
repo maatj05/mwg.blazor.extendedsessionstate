@@ -1,4 +1,4 @@
-﻿namespace mwg.blazor.extendedsessionstate;
+﻿namespace maatwerkgiethoorn.blazor.extendedsessionstate;
 
  
 public interface ISessionIdManager

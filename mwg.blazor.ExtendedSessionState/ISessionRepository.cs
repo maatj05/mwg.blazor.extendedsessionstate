@@ -1,9 +1,8 @@
 ﻿
-namespace mwg.blazor.extendedsessionstate
+namespace maatwerkgiethoorn.blazor.extendedsessionstate;
+
+public interface ISessionRepository<T> where T : new()
 {
-    public interface ISessionRepository<T> where T : new()
-    {
-        Task<T> Get(Guid key);
-        Task Update(Guid key, T session);
-    }
+    Task<T> Get(Guid key);
+    Task Update(Guid key, T session);
 }

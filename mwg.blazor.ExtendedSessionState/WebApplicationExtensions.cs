@@ -1,34 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace mwg.blazor.extendedsessionstate;
+namespace maatwerkgiethoorn.blazor.extendedsessionstate;
 
 public static class WebApplicationExtensions
 {
-    //public static WebApplication UseExtendedSessionState(this WebApplication app)
-    //{
-    //    app.UseEndpoints(endpoints =>
-    //    {
-    //        endpoints.MapGet("/State", async (ISessionManager sessionManager) =>
-    //        {
-    //            var session = await sessionManager.GetSessionAsync();
-    //            return Results.Json(session);
-    //        });
-
-    //        endpoints.MapPut("/State", async (ISessionManager sessionManager, AppState updatedSession) =>
-    //        {
-    //            await sessionManager.UpdateSessionAsync(updatedSession);
-    //            return Results.Ok();
-    //        });
-    //    });
-
-    //    return app;
-    //}
-
-
-
-
-
-
 
 
     public static IServiceCollection AddExtendedSessionStateServer<T>(this IServiceCollection services) where T : class, new()

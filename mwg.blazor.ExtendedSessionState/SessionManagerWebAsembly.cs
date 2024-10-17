@@ -1,6 +1,6 @@
 ﻿using System.Net.Http.Json;
 
-namespace mwg.blazor.extendedsessionstate;
+namespace maatwerkgiethoorn.blazor.extendedsessionstate;
 
 public class SessionManagerWebAsembly<T>(HttpClient client) : ISessionManager<T> where T : class, new()
 {

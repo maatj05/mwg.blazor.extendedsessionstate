@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\mwg.blazor.ExtendedSessionState\mwg.blazor.extendedsessionstate.csproj" />
+    <ProjectReference Include="..\..\mwg.blazor.ExtendedSessionState\maatwerkgiethoorn.blazor.extendedsessionstate.csproj" />
   </ItemGroup>
 
 </Project>
