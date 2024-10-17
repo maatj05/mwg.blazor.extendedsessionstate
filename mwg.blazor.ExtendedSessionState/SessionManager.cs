@@ -1,39 +1,24 @@
-﻿namespace mwg.blazor.extendedsessionstate;
+﻿using Microsoft.AspNetCore.Http;
+
+namespace mwg.blazor.extendedsessionstate;
 
 public class SessionManager<T> : ISessionManager<T>  where T: new()
 {
 
     private readonly ISessionIdManager _sessionIdManager;
-    private readonly Dictionary<Guid, T> _sessions = [];
+    private readonly ISessionRepository<T> _sessionRepository;
 
-    public SessionManager(ISessionIdManager sessionIdManager)
+    public SessionManager(ISessionIdManager sessionIdManager, ISessionRepository<T> sessionRepository)
     {
         _sessionIdManager = sessionIdManager;
+        _sessionRepository = sessionRepository;
     }
 
     public async Task<T> GetSessionAsync()
     {
         var key = await _sessionIdManager.GetSessionId();
 
-        T session;
-
-        if (!_sessions.ContainsKey(key))
-        {
-
-            //generate a random name
-            var names = new[] { "Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Heidi" };
-            var random = new Random();
-            var name = names[random.Next(names.Length)];
-
-            session = new();
-            _sessions.Add(key, session);
-        }
-
-
-
-        session = _sessions[key];
-
-
+        var session = await _sessionRepository.Get(key);
 
         var endTime = DateTime.Now + TimeSpan.FromSeconds(10);
         //while (session.IsCheckedOut)
@@ -51,7 +36,34 @@ public class SessionManager<T> : ISessionManager<T>  where T: new()
         if (session != null)
         {
             var key = await _sessionIdManager.GetSessionId();
-            _sessions[key] = session;
+            await _sessionRepository.Update(key, session);
         }
     }
 }
+
+
+
+public class InMemorySessionRepository<T> : ISessionRepository<T> where T : new()
+{
+
+    private readonly Dictionary<Guid, T> _sessionList = [];
+    public async Task<T> Get(Guid key)
+    {
+        T session;
+
+        if (!_sessionList.ContainsKey(key))
+        {
+            session = new();
+            _sessionList.Add(key, session);
+        }
+        session = _sessionList[key];
+        return await Task.FromResult(session);
+    }
+
+    public async Task Update(Guid key, T session)
+    {
+        _sessionList[key] = session;
+        await Task.CompletedTask;
+    }
+}
+ 

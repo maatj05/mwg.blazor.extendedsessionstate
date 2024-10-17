@@ -1,4 +1,4 @@
-﻿using mwg.blazor.ExtendedSessionState;
+﻿using mwg.blazor.extendedsessionstate;
 using RendrModeDemo.Client;
 
 namespace RendrModeDemo;
