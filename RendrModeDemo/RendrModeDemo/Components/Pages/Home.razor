@@ -1,0 +1,31 @@
+﻿@page "/"
+@using Marimer.Blazor.RenderMode
+@* @inject ISessionManager SessionManager *@
+
+
+<PageTitle>Home</PageTitle>
+
+<DisplayRendermode />
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+@* <p class="alert-info">Render mode: @renderMode</p>
+<p class="alert-warning">Session id: @sessionId</p>
+<p class="alert-primary">Session value: @sessionValue</p> *@
+
+@code
+{
+    private string? renderMode;
+    private string? sessionId;
+    private string? sessionValue;
+
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     var session = await SessionManager.GetSessionAsync();
+    //     sessionId = session.Id.ToString();
+    //     sessionValue = session.Name;
+        
+    // }
+}

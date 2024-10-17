@@ -1,0 +1,44 @@
+﻿@page "/counter"
+@rendermode InteractiveAuto
+@inject ISessionManager<AppState> SessionManager
+
+
+<PageTitle>Counter</PageTitle>
+
+<DisplayRendermode />
+
+
+
+<p class="alert-warning">Session id: @sessionId</p>
+<p class="alert-primary">Session value: @sessionValue</p>
+
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int currentCount = 0;
+    private string? sessionId;
+    private string? sessionValue;
+    AppState? session;
+    protected override async Task OnInitializedAsync()
+    {
+        session = await SessionManager.GetSessionAsync();
+        sessionValue = session.Name;
+        sessionId = session.Id.ToString();
+        currentCount = session.CounterCount;
+
+
+    }
+
+    private async Task IncrementCount()
+    {
+        currentCount++;
+        session = session! with { CounterCount = currentCount  };
+        
+        await SessionManager.UpdateSessionAsync(session);
+    }
+}

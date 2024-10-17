@@ -1,0 +1,25 @@
+﻿
+@inject ISessionManager<AppState> SessionManager
+<Router AppAssembly="typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(Client._Imports).Assembly }">
+    <Found Context="routeData">
+        <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
+        <FocusOnNavigate RouteData="routeData" Selector="h1" />
+    </Found>
+</Router>
+
+
+
+
+
+@code {
+    string sessionId = default!;
+    string name = default!;
+    protected override async Task OnInitializedAsync()
+    {
+
+        var session = await SessionManager.GetSessionAsync();
+        sessionId = session.Id.ToString();
+        name = session.Name;
+        //await SessionManager.UpdateSessionAsync(session);
+    }
+}
