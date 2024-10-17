@@ -1,0 +1,40 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  projectPath: 'mwg.blazor.ExtendedSessionState/mwg.blazor.extendedsessionstate.csproj'
+
+steps:
+# Restore, Build, and Pack in a single DotNetCoreCLI task
+- task: DotNetCoreCLI@2
+  displayName: "Restore, Build, and Pack"
+  inputs:
+    command: 'pack'
+    projects: '$(projectPath)'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'BUILD_BUILDNUMBER'
+
+# Push the package to the feed
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '9331453b-bfee-4673-a7af-6a642e1b7e14'
+    allowPackageConflicts: true
+
+# Push the package to the public NuGet repository
+- task: NuGetCommand@2
+  displayName: 'NuGet push to NuGet.org'
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'NuGet push'
+
