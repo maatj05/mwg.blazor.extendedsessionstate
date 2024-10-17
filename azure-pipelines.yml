@@ -6,15 +6,26 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  projectPath: 'mwg.blazor.ExtendedSessionState/mwg.blazor.extendedsessionstate.csproj'
+  projectPath1: 'mwg.blazor.ExtendedSessionState/mwg.blazor.extendedsessionstate.csproj'
+  projectPath2: 'maatwerkgiethoorn.blazor.extendedsessionstate.server/maatwerkgiethoorn.blazor.extendedsessionstate.server.csproj'
 
 steps:
 # Restore, Build, and Pack in a single DotNetCoreCLI task
 - task: DotNetCoreCLI@2
-  displayName: "Restore, Build, and Pack"
+  displayName: "Restore, Build, and Pack for mwg.blazor.ExtendedSessionState"
   inputs:
     command: 'pack'
-    projects: '$(projectPath)'
+    projects: '$(projectPath1)'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'BUILD_BUILDNUMBER'
+
+# Add the second project
+- task: DotNetCoreCLI@2
+  displayName: "Restore, Build, and Pack for maatwerkgiethoorn.blazor.extendedsessionstate.server"
+  inputs:
+    command: 'pack'
+    projects: '$(projectPath2)'
     arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'BUILD_BUILDNUMBER'
@@ -37,4 +48,3 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
     nuGetFeedType: 'external'
     publishFeedCredentials: 'NuGet push'
-

@@ -7,14 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RendrModeDemo", "RendrModeD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RendrModeDemo.Client", "RendrModeDemo\RendrModeDemo.Client\RendrModeDemo.Client.csproj", "{2C1CA664-A6AD-455A-AEE8-97A65192D802}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "maatwerkgiethoorn.blazor.extendedsessionstate", "mwg.blazor.ExtendedSessionState\maatwerkgiethoorn.blazor.extendedsessionstate.csproj", "{B43C5CC5-47C9-43A3-A822-6C57D489DE31}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E560404C-CD77-4780-9F69-211869568694}"
 	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "maatwerkgiethoorn.blazor.extendedsessionstate.server", "maatwerkgiethoorn.blazor.extendedsessionstate.server\maatwerkgiethoorn.blazor.extendedsessionstate.server.csproj", "{AC8D75BE-9309-42BF-97D3-CD89AD740442}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "maatwerkgiethoorn.blazor.extendedsessionstate.server", "maatwerkgiethoorn.blazor.extendedsessionstate.server\maatwerkgiethoorn.blazor.extendedsessionstate.server.csproj", "{AC8D75BE-9309-42BF-97D3-CD89AD740442}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "maatwerkgiethoorn.blazor.extendedsessionstate", "maatwerkgiethoorn.blazor.extendedsessionstate\maatwerkgiethoorn.blazor.extendedsessionstate.csproj", "{9AD2DFEA-1D16-44AF-A6F1-AC0195099539}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,14 +31,14 @@ Global
 		{2C1CA664-A6AD-455A-AEE8-97A65192D802}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C1CA664-A6AD-455A-AEE8-97A65192D802}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C1CA664-A6AD-455A-AEE8-97A65192D802}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B43C5CC5-47C9-43A3-A822-6C57D489DE31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B43C5CC5-47C9-43A3-A822-6C57D489DE31}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B43C5CC5-47C9-43A3-A822-6C57D489DE31}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B43C5CC5-47C9-43A3-A822-6C57D489DE31}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AC8D75BE-9309-42BF-97D3-CD89AD740442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AC8D75BE-9309-42BF-97D3-CD89AD740442}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC8D75BE-9309-42BF-97D3-CD89AD740442}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC8D75BE-9309-42BF-97D3-CD89AD740442}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AD2DFEA-1D16-44AF-A6F1-AC0195099539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AD2DFEA-1D16-44AF-A6F1-AC0195099539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AD2DFEA-1D16-44AF-A6F1-AC0195099539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AD2DFEA-1D16-44AF-A6F1-AC0195099539}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
