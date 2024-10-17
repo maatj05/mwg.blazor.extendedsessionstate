@@ -6,7 +6,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  projectPath1: 'mwg.blazor.ExtendedSessionState/mwg.blazor.extendedsessionstate.csproj'
+  projectPath1: 'maatwerkgiethoorn.blazor.extendedsessionstate/maatwerkgiethoorn.blazor.extendedsessionstate.csproj'
   projectPath2: 'maatwerkgiethoorn.blazor.extendedsessionstate.server/maatwerkgiethoorn.blazor.extendedsessionstate.server.csproj'
 
 steps:
