@@ -29,3 +29,13 @@ steps:
     publishVstsFeed: '9331453b-bfee-4673-a7af-6a642e1b7e14'
     allowPackageConflicts: true
 
+# Push the package to the public NuGet repository
+- task: NuGetCommand@2
+  displayName: 'NuGet push to NuGet.org'
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+    nuGetFeedType: 'external'
+    nuGetArgs: '-ApiKey $(NuGetApiKey) -Source https://api.nuget.org/v3/index.json'
+    allowPackageConflicts: true
+
