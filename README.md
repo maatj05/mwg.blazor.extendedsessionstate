@@ -54,7 +54,7 @@ public class AppState
 {
     public int CounterCount { get; set; }
 }
-'''
+```
 This class holds the shared state of your application. You can extend it with other properties as needed to maintain the state across the client and server.
 
 ### Blazor component example
