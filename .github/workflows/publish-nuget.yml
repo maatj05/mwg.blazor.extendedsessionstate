@@ -28,7 +28,7 @@ jobs:
         run: dotnet build maatwerkgiethoorn.blazor.extendedsessionstate.sln --configuration Release --no-restore
       # Find and pack all projects under Src\ folder
       - name: Pack all projects in Src
-        run: dotnet pack Src/maatwerkgiethoorn.blazor.extendedsessionstate.core/maatwerkgiethoorn.blazor.extendedsessionstate.csproj --configuration Release --no-build p:PackageVersion=1.0.2
+        run: dotnet pack Src/maatwerkgiethoorn.blazor.extendedsessionstate.core/maatwerkgiethoorn.blazor.extendedsessionstate.csproj --configuration Release --no-build -p:PackageVersion=${{ github.ref_name##v }}
           
 
       # Push the packages to NuGet
