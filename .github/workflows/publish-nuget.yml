@@ -3,7 +3,7 @@ name: Publish NuGet Package
 on:
   push:
     branches:
-      - master
+      - main
     tags:
       - 'v*'  # Trigger the workflow when a tag starting with "v" is pushed
   workflow_dispatch:
@@ -19,17 +19,28 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '8.0.x'  # Set .NET SDK version to 8.x
 
       - name: Restore dependencies
-        run: dotnet restore maatwerkgiethoorn.blazor.extendedsessionstate.sln
+        run: dotnet restore Src/**/*.csproj
 
       - name: Build the projects
-        run: dotnet build maatwerkgiethoorn.blazor.extendedsessionstate.sln --configuration Release --no-restore
-      # Find and pack all projects under Src\ folder
+        run: dotnet build Src/**/*.csproj --configuration Release --no-restore
+
+      # Pack all projects under Src\ folder and print the version
       - name: Pack all projects in Src
-        run: dotnet pack Src/maatwerkgiethoorn.blazor.extendedsessionstate.core/maatwerkgiethoorn.blazor.extendedsessionstate.csproj --configuration Release --no-build -p:PackageVersion=${{ github.ref_name##v }}
-          
+        run: |
+          for csproj in $(find Src -name "*.csproj"); do
+            # Use github.ref_name and remove the leading 'v'
+            version=${{ github.ref_name }}
+            version=${version#v}  # Strip the leading 'v'
+
+            # Print the csproj file and the version being used
+            echo "Packing project: $csproj with version: $version"
+
+            # Pack the project with the stripped version
+            dotnet pack $csproj --configuration Release --no-build -p:PackageVersion=$version
+          done
 
       # Push the packages to NuGet
       - name: Push packages to NuGet
