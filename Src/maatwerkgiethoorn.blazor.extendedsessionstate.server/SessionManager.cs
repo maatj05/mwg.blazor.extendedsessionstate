@@ -2,8 +2,7 @@
 
 namespace maatwerkgiethoorn.blazor.extendedsessionstate.server;
 
-public class SessionManager<T> : ISessionManager<T> where T : new()
-{
+public class SessionManager<T> : ISessionManager<T> {  
 
     private readonly ISessionIdManager _sessionIdManager;
     private readonly ISessionRepository<T> _sessionRepository;
