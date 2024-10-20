@@ -4,7 +4,7 @@ namespace maatwerkgiethoorn.blazor.extendedsessionstate;
 
 public static class WebApplicationExtensions
 {
-    public static IServiceCollection AddExtendedSessionStateWebAssembly<T>(this IServiceCollection services, Uri hostAddress) where T : class, new()
+    public static IServiceCollection AddExtendedSessionStateWebAssembly<T>(this IServiceCollection services, Uri hostAddress) where T : class 
     {
 
 

@@ -46,7 +46,7 @@ builder.Services
 await builder.Build().RunAsync();
 ```
 ### AppState Example
-The AppState class can be any serializable class with a default constructor. Here's an example of a simple AppState class:
+The AppState class can be any serializable class or record. Here's an example of a simple AppState class:
 
 ``` csharp
 [Serializable]

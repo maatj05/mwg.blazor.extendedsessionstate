@@ -2,7 +2,7 @@
 
 namespace maatwerkgiethoorn.blazor.extendedsessionstate;
 
-public class SessionManagerWebAsembly<T>(HttpClient client) : ISessionManager<T> where T : class, new()
+public class SessionManagerWebAsembly<T>(HttpClient client) : ISessionManager<T> where T : class 
 {
     private T? _session;
 

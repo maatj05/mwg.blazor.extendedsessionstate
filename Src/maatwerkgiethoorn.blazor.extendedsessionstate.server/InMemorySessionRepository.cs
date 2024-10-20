@@ -1,6 +1,6 @@
 ﻿namespace maatwerkgiethoorn.blazor.extendedsessionstate.server;
 
-public class InMemorySessionRepository<T> : ISessionRepository<T> where T : new()
+public class InMemorySessionRepository<T> : ISessionRepository<T>  
 {
 
     private readonly Dictionary<Guid, T> _sessionList = [];

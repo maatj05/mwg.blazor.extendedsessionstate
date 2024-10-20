@@ -31,7 +31,7 @@ public static class WebApplicationExtensions
     //}
 
 
-    public static Microsoft.AspNetCore.Builder.WebApplication UseExtendedSessionState<T>(this WebApplication app) where T : new()
+    public static Microsoft.AspNetCore.Builder.WebApplication UseExtendedSessionState<T>(this WebApplication app) 
     {
 
         app.MapGet("/State", async (ISessionManager<T> sessionManager) =>
@@ -52,7 +52,7 @@ public static class WebApplicationExtensions
     }
 
 
-    public static IServiceCollection AddExtendedSessionStateServer<T>(this IServiceCollection services) where T : class, new()
+    public static IServiceCollection AddExtendedSessionStateServer<T>(this IServiceCollection services) where T : class 
     {
         // Add HttpContextAccessor
 
