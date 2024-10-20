@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - master  # Trigger on push to the master branch
-    tags:
-      - 'v*'  # Trigger when a tag starting with "v" is pushed
-  workflow_dispatch:  # Allow manual triggering of the workflow
 
 jobs:
   build:
@@ -32,17 +29,10 @@ jobs:
         run: dotnet build maatwerkgiethoorn.blazor.extendedsessionstate.sln --configuration Release --no-restore
 
       # Step 5: Pack all projects in the Src folder, using the tag version
-      - name: Pack all projects in Src
-        run: |
-          # Extract version from the Git tag, remove the leading 'v'
-          version=${{ github.ref_name }}
-          version=${version#v}  # Strip the leading 'v'
-
-          # Find and pack each project in the Src folder
-          for csproj in $(find Src -name "*.csproj"); do
-            echo "Packing project: $csproj with version: $version"
-            #dotnet pack $csproj --configuration Release --no-build -p:PackageVersion=$version
-          done
+      - name: Pack Server
+        run: dotnet pack Src/maatwerkgiethoorn.blazor.extendedsessionstate.server/maatwerkgiethoorn.blazor.extendedsessionstate.server.csproj  --configuration Release --no-build -p:PackageVersion=1.3.0
+      - name: Pack WebAssembly        
+        run: dotnet pack Src/maatwerkgiethoorn.blazor.extendedsessionstate/maatwerkgiethoorn.blazor.extendedsessionstate.webassembly.csproj  --configuration Release --no-build -p:PackageVersion=1.3.0
 
       # Step 6: Push the packages to NuGet
       #- name: Push packages to NuGet
