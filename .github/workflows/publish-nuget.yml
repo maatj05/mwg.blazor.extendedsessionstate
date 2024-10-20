@@ -1,49 +1,51 @@
-name: Publish NuGet Package
+name: Build and Publish NuGet Packages
 
 on:
   push:
     branches:
-      - main
+      - master  # Trigger on push to the master branch
     tags:
-      - 'v*'  # Trigger the workflow when a tag starting with "v" is pushed
-  workflow_dispatch:
+      - 'v*'  # Trigger when a tag starting with "v" is pushed
+  workflow_dispatch:  # Allow manual triggering of the workflow
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the code
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # Step 2: Set up .NET SDK (version 8.0.x)
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.x'  # Set .NET SDK version to 8.x
+          dotnet-version: '8.0.x'
 
+      # Step 3: Restore dependencies for the solution
       - name: Restore dependencies
-        run: dotnet restore Src/**/*.csproj
+        run: dotnet restore maatwerkgiethoorn.blazor.extendedsessionstate.sln
 
-      - name: Build the projects
-        run: dotnet build Src/**/*.csproj --configuration Release --no-restore
+      # Step 4: Build the solution
+      - name: Build the solution
+        run: dotnet build maatwerkgiethoorn.blazor.extendedsessionstate.sln --configuration Release --no-restore
 
-      # Pack all projects under Src\ folder and print the version
+      # Step 5: Pack all projects in the Src folder, using the tag version
       - name: Pack all projects in Src
         run: |
+          # Extract version from the Git tag, remove the leading 'v'
+          version=${{ github.ref_name }}
+          version=${version#v}  # Strip the leading 'v'
+
+          # Find and pack each project in the Src folder
           for csproj in $(find Src -name "*.csproj"); do
-            # Use github.ref_name and remove the leading 'v'
-            version=${{ github.ref_name }}
-            version=${version#v}  # Strip the leading 'v'
-
-            # Print the csproj file and the version being used
             echo "Packing project: $csproj with version: $version"
-
-            # Pack the project with the stripped version
             dotnet pack $csproj --configuration Release --no-build -p:PackageVersion=$version
           done
 
-      # Push the packages to NuGet
+      # Step 6: Push the packages to NuGet
       - name: Push packages to NuGet
         run: dotnet nuget push Src/**/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
         env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}  # NuGet API key stored in GitHub Secrets
