@@ -29,7 +29,8 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Pack the project
-        run: dotnet pack --configuration Release --no-build -p:PackageVersion=${{ github.ref | replace('refs/tags/v', '') }}
+        run: dotnet pack --configuration Release --no-build -p:PackageVersion=${{ github.ref_name }}
+
 
 
 
