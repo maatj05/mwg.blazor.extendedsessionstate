@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master  # Or the branch you want to trigger the action
+    tags:
+      - 'v*'  # This will trigger the workflow when a tag starting with "v" is pushed.
+
   workflow_dispatch:
 
 jobs:

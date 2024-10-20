@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+	<Description>Manage application state in Blazor projects</Description>
   </PropertyGroup>
 
   <ItemGroup>
