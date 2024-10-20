@@ -41,11 +41,11 @@ jobs:
           # Find and pack each project in the Src folder
           for csproj in $(find Src -name "*.csproj"); do
             echo "Packing project: $csproj with version: $version"
-            dotnet pack $csproj --configuration Release --no-build -p:PackageVersion=$version
+            #dotnet pack $csproj --configuration Release --no-build -p:PackageVersion=$version
           done
 
       # Step 6: Push the packages to NuGet
-      - name: Push packages to NuGet
-        run: dotnet nuget push Src/**/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
-        env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}  # NuGet API key stored in GitHub Secrets
+      #- name: Push packages to NuGet
+      #  run: dotnet nuget push Src/**/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      #  env:
+      #    NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}  # NuGet API key stored in GitHub Secrets
