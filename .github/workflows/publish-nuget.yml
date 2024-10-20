@@ -25,10 +25,7 @@ jobs:
         run: dotnet restore maatwerkgiethoorn.blazor.extendedsessionstate.sln
 
       - name: Build the projects
-        run: 
-          for csproj in $(find Src -name "*.csproj"); do
-            dotnet build $csproj --configuration Release --no-restore
-          done
+        run: dotnet build maatwerkgiethoorn.blazor.extendedsessionstate.sln --configuration Release --no-restore
       # Find and pack all projects under Src\ folder
       - name: Pack all projects in Src
         run: |
