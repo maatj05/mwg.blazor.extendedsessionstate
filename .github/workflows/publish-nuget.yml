@@ -3,10 +3,9 @@ name: Publish NuGet Package
 on:
   push:
     branches:
-      - master  # Or the branch you want to trigger the action
+      - main
     tags:
-      - 'v*'  # This will trigger the workflow when a tag starting with "v" is pushed.
-
+      - 'v*'  # Trigger the workflow when a tag starting with "v" is pushed
   workflow_dispatch:
 
 jobs:
@@ -20,21 +19,23 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0.x'  # Adjust this version to match your project
+          dotnet-version: '7.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore Src/**/*.csproj
 
-      - name: Build the project
-        run: dotnet build --configuration Release --no-restore
+      - name: Build the projects
+        run: dotnet build Src/**/*.csproj --configuration Release --no-restore
 
-      - name: Pack the project
-        run: dotnet pack --configuration Release --no-build -p:PackageVersion=${{ github.ref_name }}
+      # Find and pack all projects under Src\ folder
+      - name: Pack all projects in Src
+        run: |
+          for csproj in $(find Src -name "*.csproj"); do
+            dotnet pack $csproj --configuration Release --no-build -p:PackageVersion=${{ github.ref_name }}
+          done
 
-
-
-
-      - name: Push the package to NuGet
-        run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      # Push the packages to NuGet
+      - name: Push packages to NuGet
+        run: dotnet nuget push Src/**/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
         env:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
