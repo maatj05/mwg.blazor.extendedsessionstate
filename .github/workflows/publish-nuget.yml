@@ -19,10 +19,10 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0.x'
+          dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore Src/**/*.csproj
+        run: dotnet restore maatwerkgiethoorn.blazor.extendedsessionstate.sln
 
       - name: Build the projects
         run: dotnet build Src/**/*.csproj --configuration Release --no-restore
