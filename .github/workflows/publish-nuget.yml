@@ -28,10 +28,8 @@ jobs:
         run: dotnet build maatwerkgiethoorn.blazor.extendedsessionstate.sln --configuration Release --no-restore
       # Find and pack all projects under Src\ folder
       - name: Pack all projects in Src
-        run: |
-          for csproj in $(find Src -name "*.csproj"); do
-            dotnet pack $csproj --configuration Release --no-build p:PackageVersion=1.0.2
-          done
+        run: dotnet pack Src/maatwerkgiethoorn.blazor.extendedsessionstate.core/maatwerkgiethoorn.blazor.extendedsessionstate.csproj --configuration Release --no-build p:PackageVersion=1.0.2
+          
 
       # Push the packages to NuGet
       - name: Push packages to NuGet
