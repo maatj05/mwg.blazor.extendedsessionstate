@@ -30,15 +30,20 @@ public class SessionIdManager(IHttpContextAccessor httpContextAccessor) : ISessi
             {
                 result = Guid.NewGuid();
             }
-            var cookieOptions = new CookieOptions
+            
+            if (!httpContext.Response.HasStarted)
             {
-                Expires = DateTime.UtcNow.AddDays(1),
-                HttpOnly = true,
-                Secure = true
-            };
+                // Store the session ID in both cookies and session state
+                var cookieOptions = new CookieOptions
+                {
+                    Expires = DateTime.UtcNow.AddDays(1),
+                    HttpOnly = true,
+                    Secure = true
+                };
 
-            httpContext.Response.Cookies.Append(_sessionName, result.ToString()!, cookieOptions);
-            httpContext.Session.SetString(_sessionName, result.ToString()!);
+                httpContext.Response.Cookies.Append(_sessionName, result.ToString()!, cookieOptions);
+                httpContext.Session.SetString(_sessionName, result.ToString()!);
+            }
 
 
             return Task.FromResult(result.Value);
