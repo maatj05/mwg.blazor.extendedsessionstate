@@ -3,7 +3,7 @@ name: Publish NuGet Package
 on:
   push:
     branches:
-      - main
+      - master
     tags:
       - 'v*'  # Trigger the workflow when a tag starting with "v" is pushed
   workflow_dispatch:
