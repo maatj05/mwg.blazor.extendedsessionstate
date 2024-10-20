@@ -10,6 +10,7 @@
 		<PackageId>$(AssemblyName)</PackageId>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<Description>Manage application state in Blazor projects</Description>
+		<IsPackable>True</IsPackable>
 	</PropertyGroup>
 
 
