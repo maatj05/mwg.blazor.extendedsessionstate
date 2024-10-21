@@ -25,8 +25,9 @@
 		</None>
 	</ItemGroup>
 
+
 	<ItemGroup>
-		<ProjectReference Include="..\maatwerkgiethoorn.blazor.extendedsessionstate.core\maatwerkgiethoorn.blazor.extendedsessionstate.csproj" />
+	  <ProjectReference Include="..\maatwerkgiethoorn.blazor.extendedsessionstate.core\maatwerkgiethoorn.blazor.extendedsessionstate.csproj" />
 	</ItemGroup>
 
 </Project>

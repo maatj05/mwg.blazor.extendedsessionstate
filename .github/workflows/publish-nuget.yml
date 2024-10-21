@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      PACKAGE_VERSION: 1.4.1  # Define the version as a variable
+      PACKAGE_VERSION: 1.4.2  # Define the version as a variable
       SOLUTION_FILE: maatwerkgiethoorn.blazor.extendedsessionstate.sln  # Define the solution file as a variable
 
     steps:
@@ -38,6 +38,7 @@ jobs:
         
       - name: Pack WebAssembly
         run: dotnet pack Src/maatwerkgiethoorn.blazor.extendedsessionstate/maatwerkgiethoorn.blazor.extendedsessionstate.webassembly.csproj  --configuration Release --no-build -p:PackageVersion=${{ env.PACKAGE_VERSION }}
+
 
       # Step 6: Push the packages to NuGet
       - name: Push packages to NuGet
