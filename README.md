@@ -1,13 +1,13 @@
-# MWG.Blazor.ExtendedSessionState
+# maatwerkgiethoorn.Blazor.ExtendedSessionState
 
-'MWG.Blazor.ExtendedSessionState'  is a package that extends the session manager for a .NET 8 Blazor Web application. It can be used to ensure the app state is synchronized between the server and WebAssembly with automatic re-rendering whenever the state changes.
+'maatwerkgiethoorn.Blazor.ExtendedSessionState'  is a package that extends the session manager for a .NET 8 Blazor Web application. It can be used to ensure the app state is synchronized between the server and WebAssembly with automatic re-rendering whenever the state changes.
 
 ## Installation
 
 Install the package via NuGet:
 
 ```bash
-dotnet add package MWG.Blazor.ExtendedSessionState
+dotnet add package maatwerkgiethoorn.Blazor.ExtendedSessionState
 ```
 ## Usage
 ### Server-side setup
@@ -17,7 +17,7 @@ To use this package in a Blazor Server project, follow these steps:
 2. Add the following lines to register the necessary services and middleware:
 
 ```csharp
-using mwg.blazor.extendedsessionstate;
+using maatwerkgiethoorn.blazor.extendedsessionstate;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,7 +37,7 @@ For Blazor WebAssembly projects, follow these steps:
 1. Open your Program.cs file.
 2. Add the following lines to register the session state services:
 ``` csharp
-using mwg.blazor.extendedsessionstate;
+using maatwerkgiethoorn.blazor.extendedsessionstate;
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
 builder.Services

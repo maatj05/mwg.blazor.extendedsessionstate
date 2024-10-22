@@ -11,7 +11,7 @@
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<Description>Manage application state in Blazor projects</Description>
 		<IsPackable>True</IsPackable>
-		<PackageProjectUrl>https://github.com/maatj05/mwg.blazor.extendedsessionstate</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/maatj05/maatwerkgiethoorn.blazor.extendedsessionstate</PackageProjectUrl>
 	</PropertyGroup>
 
 
