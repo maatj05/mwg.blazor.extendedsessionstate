@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-	  <None Include="..\LICENSE.txt" Link="LICENSE.txt">
+	  <None Include="..\..\LICENSE.txt" Link="LICENSE.txt">
 		  <PackagePath>\</PackagePath>
 		  <Pack>True</Pack>
 	  </None>
