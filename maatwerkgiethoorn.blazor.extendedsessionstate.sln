@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "maatwerkgiethoorn.blazor.ex
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "maatwerkgiethoorn.blazor.extendedsessionstate.webassembly", "Src\maatwerkgiethoorn.blazor.extendedsessionstate\maatwerkgiethoorn.blazor.extendedsessionstate.webassembly.csproj", "{9AD2DFEA-1D16-44AF-A6F1-AC0195099539}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "maatwerkgiethoorn.blazor.extendedsessionstate", "Src\maatwerkgiethoorn.blazor.extendedsessionstate.core\maatwerkgiethoorn.blazor.extendedsessionstate.csproj", "{65C6E93B-6242-4839-A089-C168AF7F5992}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "maatwerkgiethoorn.blazor.extendedsessionstate.core", "Src\maatwerkgiethoorn.blazor.extendedsessionstate.core\maatwerkgiethoorn.blazor.extendedsessionstate.core.csproj", "{65C6E93B-6242-4839-A089-C168AF7F5992}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
