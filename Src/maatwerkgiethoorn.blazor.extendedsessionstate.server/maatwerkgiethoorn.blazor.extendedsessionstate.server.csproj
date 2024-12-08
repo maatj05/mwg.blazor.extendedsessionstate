@@ -26,8 +26,4 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.10" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\maatwerkgiethoorn.blazor.extendedsessionstate.core\maatwerkgiethoorn.blazor.extendedsessionstate.core.csproj" />
-  </ItemGroup>
-
 </Project>
